@@ -1,10 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>E-commerce Project</title>
-</head>
-<body>
-  <p>Front Entrance</p>
-</body>
-</html>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-sm-10">
+      <!-- all products display -->
+      <div class="row">
+      <% @products.each do |product| %>
+        <div class="col-6 col-sm-4 col-md-3">
+          <div class="card opacity_white">
+            <% if product.image? %>
+              <%= image_tag product.image, height:'50%', class: "card-img-top" %>
+            <% else %>
+              <img  class="card-img-top" src="http://via.placeholder.com/350x235">
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= link_to product.name, product_path(product) %></h5> 
+              <p class="card-text"><%= truncate(product.description, length: 50) %></p>
+              <h2 class="card-text">$ <%= product.price %></h2>
+              
+            </div>
+            <h5 class="card-footer"><%= link_to "Add to Cart" %></h5> 
+          </div>
+        </div>
+      <% end %>
+      </div>
+      <!-- 有generate kaminari paginate bootstrap style -->
+      <br/>
+      <div class="pagination justify-content-center">
+        <%= paginate @products, theme: 'twitter-bootstrap-4' %>
+      </div>
+    </div>
+    <div class="col-6 col-sm-2">
+      <!-- cart -->
+      <h2>Cart</h2>
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Pproduct</th>
+            <th scope="col">price</th>
+            <th scope="col">quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>product</td>
+            <td>$$</td>
+            <td>??</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>product</td>
+            <td>$$</td>
+            <td>??</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

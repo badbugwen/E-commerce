@@ -1,0 +1,2 @@
+class CartitemController < ApplicationController
+end

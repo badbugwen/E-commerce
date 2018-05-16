@@ -1,2 +1,0 @@
-class CartitemController < ApplicationController
-end

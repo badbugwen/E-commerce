@@ -1,10 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>E-commerce Project</title>
-</head>
-<body>
-  <p>Admin Entrance</p>
-</body>
-</html>
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <%= link_to'Order list', admin_orders_path, class: "nav-link" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to'Product list', admin_root_path, class: "nav-link active" %>
+    </li>
+    <li><%= link_to'+ Add new product', new_admin_product_path, class:"btn btn-primary" %>
+    </li>
+  </ul>
+
+  <table class="table table-hover">
+     <thead class="thead-light ">
+      <tr>
+        <td class="col">Product name</th>
+        <td class="col">Image</td>
+        <td class="col">Price</td>
+        <td class="col">Edit</td>
+        <td class="col">Delete</td>
+      </tr>
+    </thead>
+    <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td>
+          <%= link_to product_path(product) do %>@<%= product.name %><% end %>
+        </th>
+        <td>
+          <% if product.image? %>
+            <%= image_tag product.image, width: '100px', class: "rounded m-auto d-block" %>
+          <% else %>
+            <h4 class="text-center">No Product Image</span></h1>
+          <% end %>
+        </td>
+        <td><%= product.price %></td>       
+        <td><%= link_to 'Edit', edit_admin_product_path(product), class: "text-center" %>    
+        </td>
+        <td><%= link_to 'Delet', admin_product_path(product), method: :delete, data:{ confirm: "確定刪除?" }, class: "text-center" %>    
+        </td>  
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <div class="container pagination justify-content-center" >
+    <%= paginate @products, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm" %>
+  </div>
+</div>

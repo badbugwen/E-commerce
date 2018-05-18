@@ -4,7 +4,7 @@
       <!-- all products display -->
       <div class="row">
       <% @products.each do |product| %>
-        <div class="col-6 col-sm-4 col-md-3">
+        <div class="col-6 col-sm-4 col-md-3 mb-3">
           <div class="card opacity_white">
             <% if product.image? %>
               <%= image_tag product.image, height:'50%', class: "card-img-top" %>
@@ -13,7 +13,7 @@
             <% end %>
             <div class="card-body">
               <h5 class="card-title"><%= link_to product.name, product_path(product) %></h5> 
-              <p class="card-text"><%= truncate(product.description, length: 50) %></p>
+              <p class="card-text"><%= truncate(product.description, length: 10) %></p>
               <h2 class="card-text">$ <%= product.price %></h2>
               
             </div>
@@ -31,6 +31,7 @@
     <div class="col-6 col-sm-2">
       <!-- sideCart -->
       <h2>Cart</h2>
+      <!-- roduct list -->
       <div class="media">
         <img  class="mr-3" width="50 px" src="http://via.placeholder.com/350x235">
         <div class="media-body">
@@ -39,6 +40,12 @@
           <h5>+ quantity -  remove</h5>
         </div>
       </div>
+      <hr>
+      <!-- totals and cart link -->
+      <h5>subtatol  $$$</h5>
+
+      <button class="btn btn-primary">View Cart</button>
+
     </div>
   </div>
 </div>

@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>E-commerce Project</title>
-</head>
-<body>
-  <p>Single product details</p>
-</body>
-</html>
+<div class="container">
+  <!-- product detail -->
+  <div class="row ">
+    <!-- product's image -->
+    <div class="col-12 col-md-6 ">
+      <% if @product.image? %>
+        <%= image_tag @product.image, width: '350px', class: "img-responsive center-block" %>
+      <% else %>
+        <img  class="card-img-top" src="http://via.placeholder.com/350x235">
+      <% end %>
+    </div>  
+
+    <!-- product's details -->
+    <div class="col-12 col-sm-6 ">
+      <ul class="list-unstyled">
+        <li><h1><%= @product.name %></h1></li>
+        <li><h4>$<%= @product.price %></h4></li>
+        <li><%= @product.description%></li>
+      </ul>
+       
+      <!-- quantity change and add to cart form-->
+      <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2">
+          <input type="integer" class="form-control" id="inputProductQuantity" placeholder="1">
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Add to Cart</button>
+      </form>
+    </div>
+  </div>   
+</div>  

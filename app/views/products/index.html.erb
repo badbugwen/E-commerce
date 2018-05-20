@@ -31,15 +31,26 @@
     <div class="col-6 col-sm-2">
       <!-- sideCart -->
       <h2>Cart</h2>
-      <!-- roduct list -->
-      <div class="media">
-        <img  class="mr-3" width="50 px" src="http://via.placeholder.com/350x235">
-        <div class="media-body">
-          <h5 class="mt-0">Product name</h5>
-          <h5>product.price</h5>
-          <h5>+ quantity -  remove</h5>
-        </div>
-      </div>
+      <hr>
+
+      <!-- cart_items list -->
+      <ul class="list-unstyled">
+      <% current_cart.cart_items.each do |cart_items| %>
+        <li class="media">
+          <% if cart_item.product.image? %>
+            <%= image_tag cart_item.product.image, width:"50 px", class: "mr-3" %>
+          <% else %>
+            <img  class="mr-3" src="http://via.placeholder.com/50x35">
+          <% end %>
+          <div class="media-body">
+            <h5 class="mt-0"><%= cart_item.product.name %></h5>
+            <%= cart_item.product.price %>
+            <span class="badge badge-secondary">-<%= cart_item.product.price %>+</span>
+            <%= button_to 'Remove',add_to_cart_product_path(product), method: :delete, data:{ confirm: "確定刪除?" } %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
       <hr>
       <!-- totals and cart link -->
       <h5>subtatol  $$$</h5>

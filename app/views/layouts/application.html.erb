@@ -27,16 +27,16 @@
             <% end %>  
           </p>
         </li>
-        <% if current_user.admin? %>
+        <% if current_user && current_user.admin? %>
           <li class="nav-item">
             <%= link_to'Admin Panel', admin_root_path, class: "nav-link" %>
           </li>
         <% end %>
         <li class="nav-item">
-          <%= link_to 'Cart',  class: "nav-link" %> 
+          <%= link_to 'Cart', cart_path, class: "nav-link"  %> 
         </li>
         <li class="nav-item">
-          <%= link_to 'Order', class: "nav-link" %> 
+          <%= link_to 'Order', order_path, class: "nav-link" %> 
         </li>
         <% if current_user %>
           <li class="nav-item">
@@ -46,7 +46,6 @@
             <%= link_to'修改密碼', edit_user_registration_path, class: "nav-link" %>
           </li>
         <% else %>
-          <li class="nav-item"> Hi, visitor</li>
           <li class="nav-item">
             <%= link_to'註冊', new_user_registration_path, class: "nav-link" %>
           </li>

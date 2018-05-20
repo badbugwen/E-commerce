@@ -15,4 +15,9 @@ class ProductsController < ApplicationController
     redirect_to root_path
   end
   
+  def delete_from_cart
+    @cart_item = CartItem.find_by(params[:id])
+    @cart_item.destroy
+    redirect_back(fallback_location: root_path)
+  end
 end

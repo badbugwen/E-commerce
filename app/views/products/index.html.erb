@@ -30,35 +30,7 @@
     </div>
     <div class="col-6 col-sm-2">
       <!-- sideCart -->
-      <h2>Cart</h2>
-      <hr>
-
-      <!-- cart_items list -->
-      <ul class="list-unstyled">
-      <% current_cart.cart_items.each do |cart_item| %>
-        <li class="media">
-          <% if cart_item.product.image? %>
-            <%= image_tag cart_item.product.image, width:"50 px", class: "mr-3" %>
-          <% else %>
-            <img  class="mr-3" src="http://via.placeholder.com/50x35">
-          <% end %>
-          <div class="media-body">
-            <h5><%= cart_item.product.name %></h5>
-            <p>$<%= cart_item.product.price %></p>
-            <span class="badge badge-secondary">-</span>
-            <%= cart_item.quantity %>
-            <span class="badge badge-secondary">+</span>
-            <%= button_to 'Remove' %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-      <hr>
-      <!-- totals and cart link -->
-      <h5>subtotal $$$</h5>
-
-      <button class="btn btn-primary">View Cart</button>
-
+      <%= render partial: "shared/side_cart" %>
     </div>
   </div>
 </div>

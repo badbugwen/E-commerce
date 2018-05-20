@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   
   resources :products, only: [:index, :show] do
     post :add_to_cart, on: :member
+    post :delete_from_cart, on: :member
   end   
   resource :cart
   resource :order

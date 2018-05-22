@@ -13,9 +13,9 @@
     <div class="media-body">
       <h5><%= cart_item.product.name %></h5>
       <p>$<%= cart_item.product.price %></p>
-      <span class="badge badge-secondary">-</span>
+      <%= link_to ' - ', change_cart_item_product_path(cart_item.product, type: 'reduce'), method: :post, class: "badge badge-pill badge-secondary" %>
       <%= cart_item.quantity %>
-      <span class="badge badge-secondary">+</span>
+      <%= link_to ' + ', change_cart_item_product_path(cart_item.product, type: 'add'), method: :post, class: "badge badge-pill badge-secondary" %>
       <%= button_to 'Delete', delete_from_cart_product_path(cart_item.product) %>
     </div>
   </li>

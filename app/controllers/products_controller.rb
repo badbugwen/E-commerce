@@ -21,7 +21,8 @@ class ProductsController < ApplicationController
   end
 
   def change_cart_item
-    cart_item = CartItem.find_by(params[:id])
+    @product = Product.find(params[:id])
+    cart_item = CartItem.find_by(product: @product)
     if params[:type] == "add"
       cart_item.quantity += 1
     elsif params[:type] == "reduce"

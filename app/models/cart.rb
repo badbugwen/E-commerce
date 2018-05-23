@@ -13,4 +13,9 @@ class Cart < ApplicationRecord
     end  
     self.cart_items
   end
+
+  def subtotal
+    self.cart_items.to_a.sum(&:subtotal)
+
+  end
 end
